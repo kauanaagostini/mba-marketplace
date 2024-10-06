@@ -5,9 +5,11 @@ export default {
   theme: {
     extend: {
       borderRadius: {
-        lg: 'var(--radius)',
-        md: 'calc(var(--radius) - 2px)',
+        xlg: 'calc(var(--radius) + 16px)',
+        lg: 'calc(var(--radius) + 4px)',
+        md: 'var(--radius)',
         sm: 'calc(var(--radius) - 4px)',
+        xsm: 'calc(var(--radius) - 6px)',
       },
       colors: {
         background: 'hsl(var(--background))',
@@ -23,10 +25,12 @@ export default {
         primary: {
           DEFAULT: 'hsl(var(--primary))',
           foreground: 'hsl(var(--primary-foreground))',
+          hover: 'hsl(var(--primary-hover))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',
           foreground: 'hsl(var(--secondary-foreground))',
+          hover: 'hsl(var(--secondary-hover))',
         },
         muted: {
           DEFAULT: 'hsl(var(--muted))',
@@ -40,7 +44,10 @@ export default {
           DEFAULT: 'hsl(var(--destructive))',
           foreground: 'hsl(var(--destructive-foreground))',
         },
-        border: 'hsl(var(--border))',
+        border: {
+          DEFAULT: 'hsl(var(--border))',
+          hover: 'hsl(var(--border-hover))',
+        },
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         chart: {
@@ -50,6 +57,9 @@ export default {
           4: 'hsl(var(--chart-4))',
           5: 'hsl(var(--chart-5))',
         },
+      },
+      backgroundImage: {
+        'hero-auth-page': "url('/public/Background.png')",
       },
     },
   },
