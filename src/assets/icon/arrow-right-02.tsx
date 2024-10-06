@@ -1,4 +1,4 @@
-import { iconsTypeProps } from "@/types/iconsType"
+import { iconsTypeProps } from '@/types/iconsType'
 
 export const ArrowRightIcon = ({ color, width, height }: iconsTypeProps) => (
   <svg
