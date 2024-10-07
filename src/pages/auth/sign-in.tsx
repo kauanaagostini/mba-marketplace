@@ -18,9 +18,12 @@ const signInForm = z.object({
 type SignInForm = z.infer<typeof signInForm>
 
 export function SignIn() {
-  const { register, handleSubmit } = useForm<SignInForm>()
+  const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignInForm>()
 
-  function handleSignIn(data: SignInForm) {}
+  async function handleSignIn(data: SignInForm) {
+    console.log(data)
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+  }
 
   return (
     <>
@@ -80,6 +83,7 @@ export function SignIn() {
               type="submit"
               className="flex w-full justify-between font-medium"
               size={'lg'}
+              disabled={isSubmitting}
             >
               Acessar
               <ArrowRightIcon
