@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { z } from 'zod'
 
 import { AccessIcon } from '@/assets/icon/access'
@@ -18,7 +19,11 @@ const signInForm = z.object({
 type SignInForm = z.infer<typeof signInForm>
 
 export function SignIn() {
-  const { register, handleSubmit, formState: { isSubmitting } } = useForm<SignInForm>()
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<SignInForm>()
 
   async function handleSignIn(data: SignInForm) {
     console.log(data)
@@ -28,12 +33,8 @@ export function SignIn() {
   return (
     <>
       <Helmet title="Login" />
-      <div className="m-6 flex h-[calc(100%-3rem)] flex-col rounded-xlg bg-card px-20 py-16">
-        {' '}
-        {/* content */}
+      <div className="m-6 flex h-[calc(100%-3rem)] flex-col gap-20 rounded-xlg bg-card px-20 py-16">
         <div className="flex flex-1 flex-col gap-12">
-          {' '}
-          {/* Account */}
           <header>
             <h1 className="text-2xl font-bold text-secondary-foreground">
               Acesse sua conta
@@ -94,19 +95,22 @@ export function SignIn() {
             </Button>
           </form>
         </div>
-        <div>
+        <div className="space-y-5">
           <p>Ainda não tem uma conta?</p>
           <Button
             variant={'secondary'}
             className="flex justify-between"
             size={'lg'}
+            asChild
           >
-            Cadastrar
-            <ArrowRightIcon
-              color="--primary-foreground"
-              width={24}
-              height={24}
-            />
+            <Link to={'/sign-up'}>
+              Cadastrar
+              <ArrowRightIcon
+                color="--primary-foreground"
+                width={24}
+                height={24}
+              />
+            </Link>
           </Button>
         </div>
       </div>
