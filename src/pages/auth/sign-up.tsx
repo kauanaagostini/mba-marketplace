@@ -13,12 +13,16 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { PasswordInput } from '@/components/ui/password-input'
+import { useMutation } from '@tanstack/react-query'
+import { Phone } from 'lucide-react'
+import { signUp } from '@/api/sign-up'
 
 const signUpForm = z.object({
   name: z.string(),
   phone: z.string(),
   email: z.string().email(),
   password: z.string(),
+  passwordConfirmation: z.string(),
 })
 
 type SignUpForm = z.infer<typeof signUpForm>
@@ -30,9 +34,26 @@ export function SignUp() {
     formState: { isSubmitting },
   } = useForm<SignUpForm>()
 
+  const { mutateAsync: newSellerFn } = useMutation({
+    mutationFn: signUp,
+  })
+
   async function handleSignUp(data: SignUpForm) {
-    console.log(data)
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      console.log(data)
+      const response = await newSellerFn({
+        name: data.name,
+        phone: data.phone,
+        email: data.email,
+        avatarId: null,
+        password: data.password,
+        passwordConfirmation: data.passwordConfirmation,
+      })
+      console.log(response)
+      
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -142,7 +163,7 @@ export function SignUp() {
                     <Input
                       id="confimrPassword"
                       type="password"
-                      // {...register('confimrPassword')}
+                      {...register('passwordConfirmation')}
                       placeholder="Confirme a senha"
                     />
                     <ViewIcon width={24} height={24} color="muted" />

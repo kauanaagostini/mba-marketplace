@@ -30,13 +30,13 @@ export function SignIn() {
   const [ cookies, setCookie, removeCookie] = useCookies(['auth'])
   const navigate = useNavigate()
 
-  const { mutateAsync: authenticate, isPending: isAuthenticatePending } = useMutation({
+  const { mutateAsync: authenticateFn, isPending: isAuthenticatePending } = useMutation({
     mutationFn: signIn,
   })
 
   async function handleSignIn(data: SignInForm) {
     try {
-      const response = await authenticate({ email: data.email, password: data.password })
+      const response = await authenticateFn({ email: data.email, password: data.password })
       if (cookies.auth) {
         removeCookie('auth')
       }
