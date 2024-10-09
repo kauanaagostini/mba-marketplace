@@ -1,7 +1,8 @@
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
+import { useCookies } from 'react-cookie'
 
 import { AccessIcon } from '@/assets/icon/access'
 import { ArrowRightIcon } from '@/assets/icon/arrow-right-02'
@@ -10,6 +11,8 @@ import { ViewIcon } from '@/assets/icon/view'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { useMutation } from '@tanstack/react-query'
+import { signIn } from '@/api/sign-in'
 
 const signInForm = z.object({
   email: z.string().email(),
@@ -24,10 +27,27 @@ export function SignIn() {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SignInForm>()
+  const [ cookies, setCookie, removeCookie] = useCookies(['auth'])
+  const navigate = useNavigate()
+
+  const { mutateAsync: authenticate, isPending: isAuthenticatePending } = useMutation({
+    mutationFn: signIn,
+  })
 
   async function handleSignIn(data: SignInForm) {
-    console.log(data)
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await authenticate({ email: data.email, password: data.password })
+      if (cookies.auth) {
+        removeCookie('auth')
+      }
+      setCookie('auth', response.accessToken, {
+        path: '/',
+        httpOnly: true,
+      })
+      navigate('/', { replace: true })
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -84,7 +104,7 @@ export function SignIn() {
               type="submit"
               className="flex w-full justify-between font-medium"
               size={'lg'}
-              disabled={isSubmitting}
+              disabled={isSubmitting || isAuthenticatePending}
             >
               Acessar
               <ArrowRightIcon
