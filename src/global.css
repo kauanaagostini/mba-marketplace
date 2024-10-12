@@ -7,8 +7,8 @@
     --foreground: 0deg 0% 40%; /*gray-300*/
     --card: 0 0% 100%; /*white*/
     /* --card-foreground: 224 71.4% 4.1%;  */
-    /* --popover: 0 0% 100%;  */
-    /* --popover-foreground: 224 71.4% 4.1%;  */
+    --popover: 197.65 73.91% 90.98%; /* blue-light */
+    --popover-foreground: 201 100% 47.06%; /* blue-dark */
     --primary: 16.77 89.8% 50%; /*orange-base*/
     --primary-foreground: 0 0% 100%; /*white*/
     --primary-hover: 16.6 92.16 40; /*orange-dark*/
@@ -19,7 +19,7 @@
     --accent: 0deg 35.48% 93.92%; /*shape*/
     /* --accent-foreground: 220.9 39.3% 11%; */
     --danger: 0 84.2% 60.2%;
-    --success: ;
+    --success: 133.7 61.35% 40.59%;
     /* --destructive-foreground: 210 20% 98%; */
     --border: 16.77 89.8% 50%; /*orange-base*/
     --border-hover: 16.6 92.16 40; /*orange-dark*/
