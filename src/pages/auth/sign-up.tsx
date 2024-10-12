@@ -1,21 +1,20 @@
+import { useMutation } from '@tanstack/react-query'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom'
 import { z } from 'zod'
 
+import { signUp } from '@/api/sign-up'
 import { AccessIcon } from '@/assets/icon/access'
-import { ArrowRightIcon } from '@/assets/icon/arrow-right-02'
+import { ArrowRightIcon } from '@/assets/icon/arrow-right'
 import { CallIcon } from '@/assets/icon/call'
-import { MailIcon } from '@/assets/icon/mail-02'
+import { MailIcon } from '@/assets/icon/mail'
 import { UserIcon } from '@/assets/icon/user'
 import { ViewIcon } from '@/assets/icon/view'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { PasswordInput } from '@/components/ui/password-input'
-import { useMutation } from '@tanstack/react-query'
-import { Phone } from 'lucide-react'
-import { signUp } from '@/api/sign-up'
 
 const signUpForm = z.object({
   name: z.string(),
@@ -50,7 +49,6 @@ export function SignUp() {
         passwordConfirmation: data.passwordConfirmation,
       })
       console.log(response)
-      
     } catch (error) {
       console.log(error)
     }

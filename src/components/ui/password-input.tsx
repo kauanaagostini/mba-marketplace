@@ -1,9 +1,8 @@
 import { EyeIcon, EyeOffIcon } from 'lucide-react'
 import * as React from 'react'
 
-import { ViewIcon } from '@/assets/icon/view'
-import { ViewOffIcon } from '@/assets/icon/view-off'
-
+// import { ViewIcon } from '@/assets/icon/view'
+// import { ViewOffIcon } from '@/assets/icon/view-off'
 import { Input } from './input'
 
 export interface PasswordInputProps

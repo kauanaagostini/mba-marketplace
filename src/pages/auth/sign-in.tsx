@@ -1,18 +1,18 @@
+import { useMutation } from '@tanstack/react-query'
+import { useCookies } from 'react-cookie'
 import { Helmet } from 'react-helmet-async'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom'
 import { z } from 'zod'
-import { useCookies } from 'react-cookie'
 
+import { signIn } from '@/api/sign-in'
 import { AccessIcon } from '@/assets/icon/access'
-import { ArrowRightIcon } from '@/assets/icon/arrow-right-02'
-import { MailIcon } from '@/assets/icon/mail-02'
+import { ArrowRightIcon } from '@/assets/icon/arrow-right'
+import { MailIcon } from '@/assets/icon/mail'
 import { ViewIcon } from '@/assets/icon/view'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { useMutation } from '@tanstack/react-query'
-import { signIn } from '@/api/sign-in'
 
 const signInForm = z.object({
   email: z.string().email(),
@@ -27,16 +27,20 @@ export function SignIn() {
     handleSubmit,
     formState: { isSubmitting },
   } = useForm<SignInForm>()
-  const [ cookies, setCookie, removeCookie] = useCookies(['auth'])
+  const [cookies, setCookie, removeCookie] = useCookies(['auth'])
   const navigate = useNavigate()
 
-  const { mutateAsync: authenticateFn, isPending: isAuthenticatePending } = useMutation({
-    mutationFn: signIn,
-  })
+  const { mutateAsync: authenticateFn, isPending: isAuthenticatePending } =
+    useMutation({
+      mutationFn: signIn,
+    })
 
   async function handleSignIn(data: SignInForm) {
     try {
-      const response = await authenticateFn({ email: data.email, password: data.password })
+      const response = await authenticateFn({
+        email: data.email,
+        password: data.password,
+      })
       if (cookies.auth) {
         removeCookie('auth')
       }

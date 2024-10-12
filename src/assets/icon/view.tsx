@@ -1,6 +1,13 @@
 import { iconsTypeProps } from '@/types/iconsType'
 
-export const ViewIcon = ({ color, width, height }: iconsTypeProps) => (
+// interface ViewIconProps extends iconsTypeProps {}
+
+export const ViewIcon = ({
+  color,
+  width,
+  height,
+  // ...props
+}: iconsTypeProps) => (
   <svg
     width={width}
     height={height}

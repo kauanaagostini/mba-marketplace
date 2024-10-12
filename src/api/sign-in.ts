@@ -1,8 +1,8 @@
-import { api } from "@/lib/axios";
+import { api } from '@/lib/axios'
 
 export interface SignInBody {
-  email: string,
-  password: string,
+  email: string
+  password: string
 }
 
 export interface SignInResponse {
@@ -10,6 +10,9 @@ export interface SignInResponse {
 }
 
 export async function signIn({ email, password }: SignInBody) {
-  const response = await api.post<SignInResponse>('/sellers/sessions', { email, password })
+  const response = await api.post<SignInResponse>('/sellers/sessions', {
+    email,
+    password,
+  })
   return response.data
 }

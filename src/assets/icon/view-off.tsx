@@ -1,6 +1,15 @@
 import { iconsTypeProps } from '@/types/iconsType'
 
-export const ViewOffIcon = ({ color, width, height }: iconsTypeProps) => (
+interface ViewOffIconProps extends iconsTypeProps {
+  onClick: () => void
+}
+
+export const ViewOffIcon = ({
+  color,
+  width,
+  height,
+  // onClick,
+}: ViewOffIconProps) => (
   <svg
     width={width}
     height={height}
