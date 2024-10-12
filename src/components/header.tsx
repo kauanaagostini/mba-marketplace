@@ -1,9 +1,10 @@
 import { ChartHistogramIcon } from '@/assets/icon/chart-histogram'
 import { PackageIcon } from '@/assets/icon/package'
 import { PlusSignIcon } from '@/assets/icon/plus-sign'
-import { UserIcon } from '@/assets/icon/user'
 import { LogoShort } from '@/assets/LogoShort'
 
+import { AccountMenu } from './account-menu'
+import { NavLink } from './nav-link'
 import { Button } from './ui/button'
 
 export function Header() {
@@ -12,22 +13,21 @@ export function Header() {
       <LogoShort />
 
       <div className="flex items-center gap-2">
-        <Button
-          variant={'ghost'}
-          size={'sm'}
-          className="flex items-center gap-2"
-        >
+        <NavLink to="/">
           <ChartHistogramIcon width={20} height={20} color="--foreground" />
           Dashboard
-        </Button>
+        </NavLink>
 
         <Button
           variant={'ghost'}
           size={'sm'}
           className="flex items-center gap-2"
+          asChild
         >
-          <PackageIcon width={20} height={20} color="--foreground" />
-          Produtos
+          <NavLink to="/products">
+            <PackageIcon width={20} height={20} color="--foreground" />
+            Produtos
+          </NavLink>
         </Button>
       </div>
 
@@ -36,9 +36,7 @@ export function Header() {
           <PlusSignIcon width={20} height={20} color="--foreground" />
           Novo produto
         </Button>
-        <div className="flex h-12 w-12 items-center justify-center rounded-sm bg-accent fill-foreground">
-          <UserIcon width={40} height={40} color={'--foreground'} />
-        </div>
+        <AccountMenu />
       </div>
     </div>
   )
