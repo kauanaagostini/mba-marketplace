@@ -10,8 +10,8 @@ import {
 } from 'recharts'
 
 import { getDayViewsRecieved } from '@/api/get-day-views-recieved'
+import { CustomTooltipLabel } from '@/components/custom-tooltip-label'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { CustomTooltipLabel } from '@/components/ui/custom-tooltip-label'
 
 export function DayViewsRecievedChart() {
   const { data: dayViewsRecieved } = useQuery({

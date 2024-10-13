@@ -7,7 +7,8 @@ export interface CustomTooltipLabelProps {
   }
 }
 
-export const CustomTooltipLabel = ({ active, payload, label }) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const CustomTooltipLabel = ({ active, payload, label }: any) => {
   if (active && payload && payload.length) {
     let visitante = ''
     if (payload[0].value === 1) {
