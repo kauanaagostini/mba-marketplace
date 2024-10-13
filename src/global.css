@@ -9,6 +9,7 @@
     /* --card-foreground: 224 71.4% 4.1%;  */
     --popover: 197.65 73.91% 90.98%; /* blue-light */
     --popover-foreground: 201 100% 47.06%; /* blue-dark */
+    --popover-hover: 201.13deg 97.55% 68.04%; /* blue-base */
     --primary: 16.77 89.8% 50%; /*orange-base*/
     --primary-foreground: 0 0% 100%; /*white*/
     --primary-hover: 16.6 92.16 40; /*orange-dark*/

@@ -21,6 +21,7 @@ export default {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+          hover: 'hsl(var(--popover-hover))',
         },
         primary: {
           DEFAULT: 'hsl(var(--primary))',
