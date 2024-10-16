@@ -19,6 +19,7 @@ import {
 
 export function AccountMenu() {
   const navigate = useNavigate()
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [cookies, _, removeCookie] = useCookies(['auth'])
 
   const { data: profile } = useQuery({

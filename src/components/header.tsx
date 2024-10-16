@@ -17,18 +17,10 @@ export function Header() {
           <ChartHistogramIcon width={20} height={20} color="--foreground" />
           Dashboard
         </NavLink>
-
-        <Button
-          variant={'ghost'}
-          size={'sm'}
-          className="flex items-center gap-2"
-          asChild
-        >
-          <NavLink to="/products">
-            <PackageIcon width={20} height={20} color="--foreground" />
-            Produtos
-          </NavLink>
-        </Button>
+        <NavLink to="/products">
+          <PackageIcon width={20} height={20} color="--foreground" />
+          Produtos
+        </NavLink>
       </div>
 
       <div className="flex items-center justify-between gap-4">

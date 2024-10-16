@@ -18,12 +18,6 @@ export function DayViewsRecievedChart() {
     queryKey: ['metrics', 'day-views-recieved'],
     queryFn: getDayViewsRecieved,
   })
-  console.log(
-    dayViewsRecieved?.viewsPerDay[0].date?.toLocaleString('pt-BR', {
-      day: '2-digit',
-      month: 'long',
-    }),
-  )
 
   return (
     <Card className="rounded-lg border-none shadow-none">
